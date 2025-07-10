@@ -1,4 +1,6 @@
 User-agent: *
 Disallow: /sitemap.xml
+Disallow: /gia-vang.html
+Disallow: /lien-he.html
 
 Sitemap: https://vangvansang.vn/sitemap.xml
