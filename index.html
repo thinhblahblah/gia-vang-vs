@@ -152,7 +152,16 @@ font-size: 25px;
       Do giá vàng biến động từng phút, bảng giá mang tính chất tham khảo thời điểm,<br>
       để biết cụ thể liên hệ số hotline: 0949315462 - 0916885999, không chốt giá và nhận cọc online
     </div>
+<p>Cập nhật lúc: <span id="update-time">Đang tải...</span></p>
 
+<script>
+  fetch("https://api.sheetbest.com/sheets/2a5aa0cb-a2a2-4c9d-b179-58d492c03590") // Thay bằng link thật
+    .then((res) => res.json())
+    .then((data) => {
+      const updateTime = data[0]["Cập nhật"]; // trùng tên cột
+      document.getElementById("update-time").innerText = updateTime;
+    });
+</script>
     <table>
       <thead>
         <tr>
