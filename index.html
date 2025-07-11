@@ -41,7 +41,7 @@
       background-color: #7a1f1f;
       border-radius: 12px;
     }
-    h1, h2, h3, .subtext {
+    h1, h2, h3, h4 .subtext {
       text-align: center;
     }
     h1 {
@@ -58,6 +58,13 @@
       font-size: 20px;
       text-transform: uppercase;
       margin: 10px 0;
+    }
+    h4 {
+      font-size: 15px;
+      font-style: italic;
+      text-align: left;
+      margin-top: 20px;
+      margin-bottom: 1px;
     }
     .timestamp {
       text-align: center;
@@ -150,7 +157,7 @@ font-size: 20px;
       Do giá vàng biến động từng phút, bảng giá mang tính chất tham khảo thời điểm,<br>
       để biết cụ thể liên hệ số hotline: 0949315462 - 0916885999, không chốt giá và nhận cọc online
     </div>
-<p>Cập nhật lúc: <span id="update-time">Đang tải...</span></p>
+<h4><p>Cập nhật lúc: <span id="update-time">Đang tải...</span></p><h4>
 <script>
   fetch("https://api.sheetbest.com/sheets/2a5aa0cb-a2a2-4c9d-b179-58d492c03590") // Thay bằng link thật
     .then((res) => res.json())
