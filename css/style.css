@@ -8,7 +8,7 @@
 .main-nav .nav-line {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 2px;
   margin: 4px 0;
   flex-wrap: wrap;
 }
@@ -41,7 +41,7 @@ nav {
 
 nav a {
   color: gold;
-  margin: 0 5px;
+  margin: 0 1px;
   text-decoration: none;
   font-weight: bold;
 }
