@@ -418,5 +418,28 @@ setInterval(() => {
     referrerpolicy="no-referrer-when-downgrade">
   </iframe>
 </div>
+  <div id="totalVisits">Tổng lượt truy cập: ...</div>
+<div id="todayVisits">Lượt truy cập hôm nay: ...</div>
+
+<script>
+// Tạo key riêng cho bạn (thay đổi 'your-domain.com' nếu cần)
+const namespace = "vangvansang.vn";
+const totalKey = "total";
+const todayKey = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+
+// Cộng 1 vào tổng lượt truy cập
+fetch(`https://api.countapi.xyz/hit/${namespace}/${totalKey}`)
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("totalVisits").innerText = `Tổng lượt truy cập: ${data.value}`;
+  });
+
+// Cộng 1 vào lượt truy cập hôm nay
+fetch(`https://api.countapi.xyz/hit/${namespace}/${todayKey}`)
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById("todayVisits").innerText = `Lượt truy cập hôm nay: ${data.value}`;
+  });
+</script>
 </body>
 </html>
