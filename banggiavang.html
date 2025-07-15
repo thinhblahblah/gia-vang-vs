@@ -216,3 +216,36 @@ Liên hệ với chúng tôi<a href="https://zalo.me/0916885999"><img src="https
       <a href="https://www.facebook.com/vangbacvansang"><img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" style="height:45px;" alt="Facebook"></a>
       <a href="https://maps.app.goo.gl/WcxxFVWu1MHPo6JB6?g_st=ac"><img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" style="height:45px; alt="Bản đồ"></a>
     </div>
+    <script>
+    async function fetchData() {
+      const response = await fetch("https://docs.google.com/spreadsheets/d/1DPWlzT9smgAq1h0f20wd3oAI2WmcA2xjCFBWlGpsDCM/gviz/tq?tqx=out:json&range=A3:C4");
+      const text = await response.text();
+      const json = JSON.parse(text.substring(47).slice(0, -2));
+      const rows = json.table.rows;
+      if (rows[0]) {
+        document.getElementById("sp1").textContent = rows[0].c[0]?.v || "";
+        document.getElementById("buy1").textContent = rows[0].c[1]?.v?.toLocaleString('vi-VN') || "";
+        document.getElementById("sell1").textContent = rows[0].c[2]?.v?.toLocaleString('vi-VN') || "";
+      }
+      if (rows[1]) {
+        document.getElementById("sp2").textContent = rows[1].c[0]?.v || "";
+        document.getElementById("buy2").textContent = rows[1].c[1]?.v?.toLocaleString('vi-VN') || "";
+        document.getElementById("sell2").textContent = rows[1].c[2]?.v?.toLocaleString('vi-VN') || "";
+      }
+    }
+
+    function updateTime() {
+      const now = new Date();
+      const options = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
+      const timeStr = now.toLocaleTimeString('vi-VN', options);
+      const dateStr = now.toLocaleDateString('vi-VN');
+      document.getElementById("current-time").textContent = `Giờ hiện tại: ${timeStr} - ${dateStr}`;
+    }
+
+    fetchData();
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
+  </div>
+</body>
+</html>
