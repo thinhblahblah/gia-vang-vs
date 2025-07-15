@@ -1,3 +1,32 @@
+<style>
+.main-nav {
+  background-color: #a00000;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.main-nav .nav-line {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 4px 0;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  color: gold;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.main-nav a:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+</style>
 body {
   font-family: Arial, sans-serif;
   margin: 0;
