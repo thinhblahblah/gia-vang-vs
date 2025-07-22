@@ -436,11 +436,15 @@ setInterval(() => {
 <h2 id="todayVisits">Lượt truy cập hôm nay: ...</h2>
 
 <script>
-  const namespace = "vangvansang.vn"; // domain hoặc tên riêng
-  const todayKey = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+  const namespace = "vangvansang";
+  const todayKey = new Date().toISOString().split("T")[0];
 
-  // Tổng lượt truy cập
-  fetch(`https://api.countapi.xyz/hit/${namespace}/total`)
+  // Tạo key tổng nếu chưa tồn tại
+  fetch(`https://api.countapi.xyz/create?namespace=${namespace}&key=total&value=0`)
+    .then(() => {
+      // Gọi tổng lượt truy cập
+      return fetch(`https://api.countapi.xyz/hit/${namespace}/total`);
+    })
     .then(res => res.json())
     .then(data => {
       document.getElementById("totalVisits").innerText = `Tổng lượt truy cập: ${data.value}`;
@@ -450,7 +454,7 @@ setInterval(() => {
       document.getElementById("totalVisits").innerText = "Lỗi tổng lượt!";
     });
 
-  // Lượt truy cập hôm nay
+  // Gọi lượt truy cập hôm nay (tự khởi tạo lần đầu)
   fetch(`https://api.countapi.xyz/hit/${namespace}/daily-${todayKey}`)
     .then(res => res.json())
     .then(data => {
