@@ -438,13 +438,10 @@ setInterval(() => {
 <script>
   const namespace = "vangvansang";
   const todayKey = new Date().toISOString().split("T")[0];
+  const apiBase = "https://countapi-js.vercel.app"; // bản không lỗi CORS
 
-  // Tạo key tổng nếu chưa tồn tại
-  fetch(`https://api.countapi.xyz/create?namespace=${namespace}&key=total&value=0`)
-    .then(() => {
-      // Gọi tổng lượt truy cập
-      return fetch(`https://api.countapi.xyz/hit/${namespace}/total`);
-    })
+  // Tổng lượt truy cập
+  fetch(`${apiBase}/hit/${namespace}/total`)
     .then(res => res.json())
     .then(data => {
       document.getElementById("totalVisits").innerText = `Tổng lượt truy cập: ${data.value}`;
@@ -454,8 +451,8 @@ setInterval(() => {
       document.getElementById("totalVisits").innerText = "Lỗi tổng lượt!";
     });
 
-  // Gọi lượt truy cập hôm nay (tự khởi tạo lần đầu)
-  fetch(`https://api.countapi.xyz/hit/${namespace}/daily-${todayKey}`)
+  // Lượt truy cập hôm nay
+  fetch(`${apiBase}/hit/${namespace}/daily-${todayKey}`)
     .then(res => res.json())
     .then(data => {
       document.getElementById("todayVisits").innerText = `Lượt truy cập hôm nay: ${data.value}`;
