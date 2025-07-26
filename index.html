@@ -386,7 +386,7 @@ setInterval(() => {
 
   <script>
     async function fetchData() {
-      const response = await fetch("https://docs.google.com/spreadsheets/d/1DPWlzT9smgAq1h0f20wd3oAI2WmcA2xjCFBWlGpsDCM/gviz/tq?tqx=out:json&range=A3:C4");
+      const response = await fetch("https://docs.google.com/spreadsheets/d/1DPWlzT9smgAq1h0f20wd3oAI2WmcA2xjCFBWlGpsDCM/gviz/tq?tqx=out:json&range=A3:C5");
       const text = await response.text();
       const json = JSON.parse(text.substring(47).slice(0, -2));
       const rows = json.table.rows;
