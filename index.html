@@ -225,6 +225,11 @@ font-size: 20px;
           <td id="buy2">...</td>
           <td id="sell2">...</td>
         </tr>
+        <tr>
+          <td id="sp3">...</td>
+          <td id="buy3">...</td>
+          <td id="sell3">...</td>
+        </tr>
       </tbody>
     </table>
 
@@ -399,6 +404,11 @@ setInterval(() => {
         document.getElementById("sp2").textContent = rows[1].c[0]?.v || "";
         document.getElementById("buy2").textContent = rows[1].c[1]?.v?.toLocaleString('vi-VN') || "";
         document.getElementById("sell2").textContent = rows[1].c[2]?.v?.toLocaleString('vi-VN') || "";
+      }
+      if (rows[2]) {
+        document.getElementById("sp3").textContent = rows[2].c[0]?.v || "";
+        document.getElementById("buy3").textContent = rows[2].c[1]?.v?.toLocaleString('vi-VN') || "";
+        document.getElementById("sell3").textContent = rows[2].c[2]?.v?.toLocaleString('vi-VN') || "";
       }
     }
 
