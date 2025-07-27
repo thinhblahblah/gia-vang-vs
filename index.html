@@ -431,8 +431,12 @@ setInterval(() => {
 document.getElementById("buy3").textContent =
   (buy3Value !== undefined && buy3Value !== null
     ? buy3Value.toLocaleString('vi-VN')
-    : "") + " 🔥";
-        document.getElementById("sell3").textContent = rows[2].c[2]?.v?.toLocaleString('vi-VN') || "";
+    : "") + " 👍";
+        const buy3Value = rows[2].c[2]?.v;
+document.getElementById("buy3").textContent =
+  (buy3Value !== undefined && buy3Value !== null
+    ? buy3Value.toLocaleString('vi-VN')
+    : "") + " 👍";
           // Thêm đoạn CSS để đổi màu nền + chữ dòng sp3
   document.getElementById("sp3").style.backgroundColor = "#fffcd6";
   document.getElementById("buy3").style.backgroundColor = "#fffcd6";
