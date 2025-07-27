@@ -53,6 +53,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Giá vàng Văn Sang</title>
   <style>
+        #bang-gia th, #bang-gia td {
+    font-style: normal;
+    font-size: 20px;
+    background-color: #b81319;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    /* Bỏ chữ nghiêng */
+  }
     body {
       background: linear-gradient(to bottom, #8B0000, #4B0000);
       font-family: Times new roman, sans-serif;
@@ -194,7 +203,7 @@ font-size: 20px;
       document.getElementById("update-time").innerText = updateTime;
     });
 </script>
-    <table>
+  <table id="bang-gia">
       <thead>
         <tr>
           <th>SẢN PHẨM</th>
@@ -213,10 +222,16 @@ font-size: 20px;
           <td id="buy2">...</td>
           <td id="sell2">...</td>
         </tr>
+        <tr>
+          <td id="sp3">...</td>
+          <td id="buy3">...</td>
+          <td id="sell3">...</td>
+        </tr>
       </tbody>
     </table>
 
-    <div class="unit">Đơn vị tính: 1000 VNĐ/chỉ</div>
+    <div class="unit">Đơn vị tính: 1000 VNĐ/chỉ. |
+       | 👍 = Được ưa thích</div>
 
     <div class="timestamp" style="margin-top:12px; color: #fafafa;">
       <strong>Địa chỉ:</strong><br>
@@ -227,9 +242,9 @@ Liên hệ với chúng tôi<a href="https://zalo.me/0916885999"><img src="https
       <a href="https://www.facebook.com/vangbacvansang"><img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" style="height:45px;" alt="Facebook"></a>
       <a href="https://maps.app.goo.gl/WcxxFVWu1MHPo6JB6?g_st=ac"><img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" style="height:45px; alt="Bản đồ"></a>
     </div>
-    <script>
+ <script>
     async function fetchData() {
-      const response = await fetch("https://docs.google.com/spreadsheets/d/1DPWlzT9smgAq1h0f20wd3oAI2WmcA2xjCFBWlGpsDCM/gviz/tq?tqx=out:json&range=A3:C4");
+      const response = await fetch("https://docs.google.com/spreadsheets/d/1DPWlzT9smgAq1h0f20wd3oAI2WmcA2xjCFBWlGpsDCM/gviz/tq?tqx=out:json&range=A3:C5");
       const text = await response.text();
       const json = JSON.parse(text.substring(47).slice(0, -2));
       const rows = json.table.rows;
@@ -237,11 +252,46 @@ Liên hệ với chúng tôi<a href="https://zalo.me/0916885999"><img src="https
         document.getElementById("sp1").textContent = rows[0].c[0]?.v || "";
         document.getElementById("buy1").textContent = rows[0].c[1]?.v?.toLocaleString('vi-VN') || "";
         document.getElementById("sell1").textContent = rows[0].c[2]?.v?.toLocaleString('vi-VN') || "";
+  document.getElementById("sp1").style.backgroundColor = "#feeeb3";
+  document.getElementById("buy1").style.backgroundColor = "#feeeb3";
+  document.getElementById("sell1").style.backgroundColor = "#feeeb3";
+
+  document.getElementById("sp1").style.color = "#000000";
+  document.getElementById("buy1").style.color = "#000000";
+  document.getElementById("sell1").style.color = "#000000";
       }
       if (rows[1]) {
         document.getElementById("sp2").textContent = rows[1].c[0]?.v || "";
         document.getElementById("buy2").textContent = rows[1].c[1]?.v?.toLocaleString('vi-VN') || "";
         document.getElementById("sell2").textContent = rows[1].c[2]?.v?.toLocaleString('vi-VN') || "";
+  document.getElementById("sp2").style.backgroundColor = "#feeeb3";
+  document.getElementById("buy2").style.backgroundColor = "#feeeb3";
+  document.getElementById("sell2").style.backgroundColor = "#feeeb3";
+
+  document.getElementById("sp2").style.color = "#000000";
+  document.getElementById("buy2").style.color = "#000000";
+  document.getElementById("sell2").style.color = "#000000";
+      }
+      if (rows[2]) {
+        document.getElementById("sp3").textContent = rows[2].c[0]?.v || "";
+        const buy3Value = rows[2].c[1]?.v;
+document.getElementById("buy3").textContent =
+  (buy3Value !== undefined && buy3Value !== null
+    ? buy3Value.toLocaleString('vi-VN')
+    : "") + " 👍";
+        const sell3Value = rows[2].c[2]?.v;
+document.getElementById("sell3").textContent =
+  (sell3Value !== undefined && sell3Value !== null
+    ? sell3Value.toLocaleString('vi-VN')
+    : "") + " 👍";
+          // Thêm đoạn CSS để đổi màu nền + chữ dòng sp3
+  document.getElementById("sp3").style.backgroundColor = "#fffcd6";
+  document.getElementById("buy3").style.backgroundColor = "#fffcd6";
+  document.getElementById("sell3").style.backgroundColor = "#fffcd6";
+
+  document.getElementById("sp3").style.color = "#000000";
+  document.getElementById("buy3").style.color = "#000000";
+  document.getElementById("sell3").style.color = "#000000";
       }
     }
 
