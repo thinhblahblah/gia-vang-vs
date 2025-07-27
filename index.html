@@ -239,8 +239,8 @@ font-size: 20px;
       </tbody>
     </table>
 
-    <div class="unit">Đơn vị tính: 1000 VNĐ/chỉ
-    👍 = Được ưa thích</div>
+    <div class="unit">Đơn vị tính: 1000 VNĐ/chỉ. |
+       | 👍 = Được ưa thích</div>
 
     <div class="timestamp" style="margin-top:12px; color: #fafafa;">
       <strong>Địa chỉ:</strong><br>
@@ -433,10 +433,10 @@ document.getElementById("buy3").textContent =
   (buy3Value !== undefined && buy3Value !== null
     ? buy3Value.toLocaleString('vi-VN')
     : "") + " 👍";
-        const buy3Value = rows[2].c[2]?.v;
-document.getElementById("buy3").textContent =
-  (buy3Value !== undefined && buy3Value !== null
-    ? buy3Value.toLocaleString('vi-VN')
+        const sell3Value = rows[2].c[2]?.v;
+document.getElementById("sell3").textContent =
+  (sell3Value !== undefined && sell3Value !== null
+    ? sell3Value.toLocaleString('vi-VN')
     : "") + " 👍";
           // Thêm đoạn CSS để đổi màu nền + chữ dòng sp3
   document.getElementById("sp3").style.backgroundColor = "#fffcd6";
