@@ -399,9 +399,9 @@ setInterval(() => {
         document.getElementById("sp1").textContent = rows[0].c[0]?.v || "";
         document.getElementById("buy1").textContent = rows[0].c[1]?.v?.toLocaleString('vi-VN') || "";
         document.getElementById("sell1").textContent = rows[0].c[2]?.v?.toLocaleString('vi-VN') || "";
-          document.getElementById("sp1").style.backgroundColor = "#FFE3A9";
-  document.getElementById("buy1").style.backgroundColor = "#FFE3A9";
-  document.getElementById("sell1").style.backgroundColor = "#FFE3A9";
+  document.getElementById("sp1").style.backgroundColor = "#feeeb3";
+  document.getElementById("buy1").style.backgroundColor = "#feeeb3";
+  document.getElementById("sell1").style.backgroundColor = "#feeeb3";
 
   document.getElementById("sp1").style.color = "#000000";
   document.getElementById("buy1").style.color = "#000000";
@@ -411,19 +411,26 @@ setInterval(() => {
         document.getElementById("sp2").textContent = rows[1].c[0]?.v || "";
         document.getElementById("buy2").textContent = rows[1].c[1]?.v?.toLocaleString('vi-VN') || "";
         document.getElementById("sell2").textContent = rows[1].c[2]?.v?.toLocaleString('vi-VN') || "";
+  document.getElementById("sp2").style.backgroundColor = "#feeeb3";
+  document.getElementById("buy2").style.backgroundColor = "#feeeb3";
+  document.getElementById("sell2").style.backgroundColor = "#feeeb3";
+
+  document.getElementById("sp2").style.color = "#000000";
+  document.getElementById("buy2").style.color = "#000000";
+  document.getElementById("sell2").style.color = "#000000";
       }
       if (rows[2]) {
         document.getElementById("sp3").textContent = rows[2].c[0]?.v || "";
         document.getElementById("buy3").textContent = rows[2].c[1]?.v?.toLocaleString('vi-VN') || "";
         document.getElementById("sell3").textContent = rows[2].c[2]?.v?.toLocaleString('vi-VN') || "";
           // Thêm đoạn CSS để đổi màu nền + chữ dòng sp3
-  document.getElementById("sp3").style.backgroundColor = "#FFFF00";
-  document.getElementById("buy3").style.backgroundColor = "#FFFF00";
-  document.getElementById("sell3").style.backgroundColor = "#FFFF00";
+  document.getElementById("sp3").style.backgroundColor = "#fffcd6";
+  document.getElementById("buy3").style.backgroundColor = "#fffcd6";
+  document.getElementById("sell3").style.backgroundColor = "#fffcd6";
 
-  document.getElementById("sp3").style.color = "#FF0000";
-  document.getElementById("buy3").style.color = "#FF0000";
-  document.getElementById("sell3").style.color = "#FF0000";
+  document.getElementById("sp3").style.color = "#000000";
+  document.getElementById("buy3").style.color = "#000000";
+  document.getElementById("sell3").style.color = "#000000";
       }
     }
 
