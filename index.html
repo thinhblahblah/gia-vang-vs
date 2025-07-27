@@ -399,6 +399,13 @@ setInterval(() => {
         document.getElementById("sp1").textContent = rows[0].c[0]?.v || "";
         document.getElementById("buy1").textContent = rows[0].c[1]?.v?.toLocaleString('vi-VN') || "";
         document.getElementById("sell1").textContent = rows[0].c[2]?.v?.toLocaleString('vi-VN') || "";
+          document.getElementById("sp1").style.backgroundColor = "#FFE3A9";
+  document.getElementById("buy1").style.backgroundColor = "#FFE3A9";
+  document.getElementById("sell1").style.backgroundColor = "#FFE3A9";
+
+  document.getElementById("sp1").style.color = "#000000";
+  document.getElementById("buy1").style.color = "#000000";
+  document.getElementById("sell1").style.color = "#000000";
       }
       if (rows[1]) {
         document.getElementById("sp2").textContent = rows[1].c[0]?.v || "";
