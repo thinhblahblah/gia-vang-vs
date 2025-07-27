@@ -421,8 +421,8 @@ setInterval(() => {
       }
       if (rows[2]) {
         document.getElementById("sp3").textContent = rows[2].c[0]?.v || "";
-        document.getElementById("buy3").textContent = rows[2].c[1]?.v?.toLocaleString('vi-VN') || "") + "👍";
-        document.getElementById("sell3").textContent = rows[2].c[2]?.v?.toLocaleString('vi-VN') || "") + "👍";
+        document.getElementById("buy3").textContent = rows[2].c[1]?.v?.toLocaleString('vi-VN') || "" + "👍";
+        document.getElementById("sell3").textContent = rows[2].c[2]?.v?.toLocaleString('vi-VN') || "" + "👍";
           // Thêm đoạn CSS để đổi màu nền + chữ dòng sp3
   document.getElementById("sp3").style.backgroundColor = "#fffcd6";
   document.getElementById("buy3").style.backgroundColor = "#fffcd6";
