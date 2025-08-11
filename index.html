@@ -213,6 +213,51 @@ font-size: 20px;
       để biết cụ thể liên hệ số hotline: 0949315462 - 0916885999, không chốt giá và nhận cọc online
     </div>
 <h4><p>Cập nhật lúc: <span id="update-time">Đang tải...</span></p><h4>
+  <!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Hiển thị thời gian cập nhật</title>
+</head>
+<body>
+  <div id="update-time">Cập nhật lúc: Đang tải...</div>
+
+  <script>
+    const sheetId = "1DPWlzT9smgAq1h0f20wd3oAI2WmcA2xjCFBWlGpsDCM";
+    const range = "A1:A2"; // Lấy ô tiêu đề và ô nội dung
+    const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?range=${range}&tqx=out:json`;
+
+    fetch(url)
+      .then(res => res.text())
+      .then(text => {
+        // Loại bỏ phần đầu và cuối không phải JSON
+        const json = JSON.parse(text.substring(47).slice(0, -2));
+        const raw = json.table.rows[1].c[0].v; // Giá trị ở hàng thứ 2 cột A (A2)
+
+        // Tạo đối tượng Date từ chuỗi "11/08/2025 09:03:55"
+        const [day, month, yearAndTime] = raw.split("/");
+        const [year, time] = yearAndTime.split(" ");
+        const dateObj = new Date(`${year}-${month}-${day}T${time}`);
+
+        const formatted = dateObj.toLocaleString("vi-VN", {
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false
+        });
+
+        document.getElementById("update-time").innerText = `Cập nhật lúc: ${formatted}`;
+      })
+      .catch(err => {
+        console.error("Lỗi fetch hoặc parse:", err);
+        document.getElementById("update-time").innerText = "Cập nhật lúc: Không tải được";
+      });
+  </script>
+</body>
+</html>
   <script>
     const sheetId = "1DPWlzT9smgAq1h0f20wd3oAI2WmcA2xjCFBWlGpsDCM";
     const range = "A1:A2"; // Lấy ô tiêu đề và ô nội dung
