@@ -214,10 +214,11 @@ font-size: 20px;
     </div>
 <h4><p>Cập nhật lúc: <span id="update-time">Đang tải...</span></p><h4>
 <script>
-  fetch("https://api.sheetbest.com/sheets/2a5aa0cb-a2a2-4c9d-b179-58d492c03590") // Thay bằng link thật
-    .then((res) => res.json())
-    .then((data) => {
-      const updateTime = data[0]["Cập nhật"]; // trùng tên cột
+  fetch("https://docs.google.com/spreadsheets/d/1DPWlzT9smgAq1h0f20wd3oAI2WmcA2xjCFBWlGpsDCM/gviz/tq?tqx=out:json&range=A1:A2")
+    .then(res => res.text())
+    .then(text => {
+      const json = JSON.parse(text.substr(47).slice(0, -2)); // cắt bỏ phần bọc của gviz
+      const updateTime = json.table.rows[0].c[0].v; // lấy giá trị ô A1
       document.getElementById("update-time").innerText = updateTime;
     });
 </script>
