@@ -221,25 +221,35 @@ font-size: 20px;
 </head>
 <body>
   <div id="update-time">Cập nhật lúc: Đang tải...</div>
+<div id="update-time">Cập nhật lúc: Đang tải...</div>
 
-  <script>
-    const sheetId = "1DPWlzT9smgAq1h0f20wd3oAI2WmcA2xjCFBWlGpsDCM";
-    const range = "A1:A2"; // Lấy ô tiêu đề và ô nội dung
-    const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?range=${range}&tqx=out:json`;
+<script>
+  const sheetId = "1DPWlzT9smgAq1h0f20wd3oAI2WmcA2xjCFBWlGpsDCM"; // ID sheet
+  const range = "A2:A2"; // Chỉ lấy ô A2
+  const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&range=${range}`;
 
-    fetch(url)
-      .then(res => res.text())
-      .then(text => {
-        // Loại bỏ phần đầu và cuối không phải JSON
-        const json = JSON.parse(text.substring(47).slice(0, -2));
-        const raw = json.table.rows[1].c[0].v; // Giá trị ở hàng thứ 2 cột A (A2)
+  fetch(url)
+    .then(res => res.text())
+    .then(text => {
+      const json = JSON.parse(text.substr(47).slice(0, -2));
+      let value = json.table.rows[0].c[0].v; // Giá trị A2 (có thể là Date(...) hoặc chuỗi)
 
-        // Tạo đối tượng Date từ chuỗi "11/08/2025 09:03:55"
-        const [day, month, yearAndTime] = raw.split("/");
-        const [year, time] = yearAndTime.split(" ");
-        const dateObj = new Date(`${year}-${month}-${day}T${time}`);
+      let dt;
 
-        const formatted = dateObj.toLocaleString("vi-VN", {
+      if (typeof value === "string" && value.startsWith("Date(")) {
+        // Trường hợp A2 trả về dạng Date(YYYY,MM,DD,HH,MM,SS)
+        const parts = value.match(/\d+/g).map(Number);
+        dt = new Date(parts[0], parts[1], parts[2], parts[3] || 0, parts[4] || 0, parts[5] || 0);
+      } else if (typeof value === "number") {
+        // Trường hợp là serial number của Excel/Google Sheets
+        dt = new Date((value - 25569) * 86400 * 1000);
+      } else {
+        // Trường hợp là chuỗi ngày giờ dạng text
+        dt = new Date(value);
+      }
+
+      if (!isNaN(dt)) {
+        value = dt.toLocaleString("vi-VN", {
           year: "numeric",
           month: "2-digit",
           day: "2-digit",
@@ -248,50 +258,15 @@ font-size: 20px;
           second: "2-digit",
           hour12: false
         });
+      }
 
-        document.getElementById("update-time").innerText = `Cập nhật lúc: ${formatted}`;
-      })
-      .catch(err => {
-        console.error("Lỗi fetch hoặc parse:", err);
-        document.getElementById("update-time").innerText = "Cập nhật lúc: Không tải được";
-      });
-  </script>
-</body>
-</html>
-  <script>
-    const sheetId = "1DPWlzT9smgAq1h0f20wd3oAI2WmcA2xjCFBWlGpsDCM";
-    const range = "A1:A2"; // Lấy ô tiêu đề và ô nội dung
-    const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?range=${range}&tqx=out:json`;
-
-    fetch(url)
-      .then(res => res.text())
-      .then(text => {
-        // Loại bỏ phần đầu và cuối không phải JSON
-        const json = JSON.parse(text.substring(47).slice(0, -2));
-        const raw = json.table.rows[1].c[0].v; // Giá trị ở hàng thứ 2 cột A (A2)
-
-        // Tạo đối tượng Date từ chuỗi "11/08/2025 09:03:55"
-        const [day, month, yearAndTime] = raw.split("/");
-        const [year, time] = yearAndTime.split(" ");
-        const dateObj = new Date(`${year}-${month}-${day}T${time}`);
-
-        const formatted = dateObj.toLocaleString("vi-VN", {
-          year: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-          hour12: false
-        });
-
-        document.getElementById("update-time").innerText = `Cập nhật lúc: ${formatted}`;
-      })
-      .catch(err => {
-        console.error("Lỗi fetch hoặc parse:", err);
-        document.getElementById("update-time").innerText = "Cập nhật lúc: Không tải được";
-      });
-  </script>
+      document.getElementById("update-time").innerText = `Cập nhật lúc: ${value}`;
+    })
+    .catch(err => {
+      console.error("Lỗi khi tải dữ liệu:", err);
+      document.getElementById("update-time").innerText = "Cập nhật lúc: Không tải được";
+    });
+</script>
     <table id="bang-gia">
       <thead>
         <tr>
