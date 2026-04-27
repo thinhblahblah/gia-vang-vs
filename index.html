@@ -44,24 +44,7 @@
 
 <!-- Thẻ mô tả chuẩn SEO -->
 <meta name="description" content="Cập nhật giá vàng 24K, 23K hôm nay tại Vàng Bạc Văn Sang - Thương hiệu uy tín từ 1993.">
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "JewelryStore",
-  "name": "Vàng Bạc Văn Sang",
-  "url": "https://vangvansang.vn",
-  "logo": "https://vangvansang.vn/favicon.png",
-  "image": "https://vangvansang.vn/anh/thumbnail.jpg",
-  "telephone": "0916885999",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "99 Trần Hưng Đạo",
-    "addressLocality": "Kẻ Sặt",
-    "addressRegion": "Hải Dương (Hải Phòng)",
-    "addressCountry": "VN"
-  }
-}
-</script>
+
 
 <!-- Ảnh thumbnail khi chia sẻ -->
 <meta property="og:image" content="https://www.vangvansang.vn/anh/thumbnail.jpg">
@@ -229,6 +212,35 @@ font-size: 20px;
       để biết cụ thể liên hệ số hotline: 0949315462 - 0916885999, không chốt giá và nhận cọc online
     </div>
 <h4><p><span id="update-time"></span></p><h4>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "JewelryStore",
+  "name": "Vàng Bạc Văn Sang",
+  "url": "https://vangvansang.vn",
+  "logo": "https://vangvansang.vn/favicon.png",
+  "image": "https://vangvansang.vn/anh/thumbnail.jpg",
+  "telephone": "0916885999",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "99 Trần Hưng Đạo",
+    "addressLocality": "Kẻ Sặt",
+    "addressRegion": "Hải Dương (Hải Phòng)",
+    "addressCountry": "VN"
+  }
+}
+</script>
+<script>
+async function loadData(){
+  ...
+}
+
+/* chạy lần đầu */
+loadData();
+
+/* tự cập nhật mỗi 60 giây */
+setInterval(loadData, 60000);
+</script>
 <script>
   const sheetId = "1DPWlzT9smgAq1h0f20wd3oAI2WmcA2xjCFBWlGpsDCM"; // ID sheet
   const range = "A2:A2"; // Chỉ lấy ô A2
