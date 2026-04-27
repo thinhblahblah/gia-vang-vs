@@ -491,7 +491,18 @@ document.getElementById("sell3").textContent =
   document.getElementById("sell3").style.color = "#000000";
       }
     }
+      if (rows[3]) {
+        document.getElementById("sp4").textContent = rows[3].c[0]?.v || "";
+        document.getElementById("buy4").textContent = rows[3].c[1]?.v?.toLocaleString('vi-VN') || "";
+        document.getElementById("sell4").textContent = rows[3].c[2]?.v?.toLocaleString('vi-VN') || "";
+  document.getElementById("sp4").style.backgroundColor = "#feeeb3";
+  document.getElementById("buy4").style.backgroundColor = "#feeeb3";
+  document.getElementById("sell4").style.backgroundColor = "#feeeb3";
 
+  document.getElementById("sp4").style.color = "#000000";
+  document.getElementById("buy4").style.color = "#000000";
+  document.getElementById("sell4").style.color = "#000000";
+      }
     function updateTime() {
       const now = new Date();
       const options = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
